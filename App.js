@@ -8,11 +8,17 @@ import Card from './components/Card'
 class App extends React.Component {
 
   state = {
-    name: "Mehmet"
+    number: 0
   }
-  onChangeName = () => {
+  onPressIncrease = () => {
     this.setState({
-      name: "Hüseyin"
+      number: --this.state.number
+    })
+  }
+
+  onPressDecrease = () => {
+    this.setState({
+      number: ++this.state.number
     })
   }
 
@@ -20,13 +26,21 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text>{this.state.name}</Text>
+          <Text>{this.state.number}</Text>
         </View>
+        <View style={styles.buttons}>
         <Button 
-          title = "Detail"
+          title = "Increase"
           color = "#000"
-          onPress = {this.onChangeName}
+          onPress = {this.onPressIncrease}
         />
+         <Button 
+          title = "Decrease"
+          color = "#000"
+          onPress = {this.onPressDecrease}
+        />
+        </View>
+        
     </View>
     )
   }
@@ -40,6 +54,9 @@ const styles = StyleSheet.create({
       flex:1,
       alignItems: "center",
       justifyContent: "center",
+    },
+    buttons : {
+      flexDirection: "row"
     }
 });
 
