@@ -1,31 +1,51 @@
 import React from 'react';
-import {StyleSheet,View,Text} from 'react-native';
+import {StyleSheet,View,Button,Text} from 'react-native';
+import Card from './components/Card'
 
 
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-        <Text style={styles.hello}>Hello</Text>
+
+class App extends React.Component {
+
+  state = {
+    name: "Mehmet"
+  }
+  onChangeName = () => {
+    this.setState({
+      name: "Hüseyin"
+    })
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+          <Text>{this.state.name}</Text>
+        </View>
+        <Button 
+          title = "Detail"
+          color = "#000"
+          onPress = {this.onChangeName}
+        />
     </View>
-  )
-      
+    )
+  }
 }
+
+
+
 
 const styles = StyleSheet.create({
     container : {
       flex:1,
       alignItems: "center",
       justifyContent: "center",
-    },
-    hello:{
-      backgroundColor: "red",
-      fontSize: 32,
-      width: 110,
-      height: 45,
-      paddingLeft: 20,
-      borderRadius: 10
     }
 });
 
 export default App;
+
+
+
+
+
